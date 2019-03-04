@@ -1,0 +1,27 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--可以控制四个角的圆形控件-->
+    <declare-styleable name="RoundImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="corner_radius" format="dimension" />
+        <attr name="leftTop_corner_radius" format="dimension" />
+        <attr name="rightTop_corner_radius" format="dimension" />
+        <attr name="leftBottom_corner_radius" format="dimension" />
+        <attr name="rightBottom_corner_radius" format="dimension" />
+        <attr name="type" format="enum">
+            <enum name="oval" value="2" />
+            <enum name="round" value="1" />
+            <enum name="circle" value="0" />
+        </attr>
+    </declare-styleable>
+
+</resources>
