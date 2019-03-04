@@ -59,14 +59,14 @@ public class MainActivity extends AppCompatActivity {
                     public void onBindViewHolder(BannerViewHolder holder, int position) {
                         if (MainActivity.this.isFinishing()) return;
                         MyBannerViewHolder viewHolder = (MyBannerViewHolder) holder;
+                        String pic = listPictures.get(position);
                         Glide.with(MainActivity.this)
-                                .load(listPictures.get(position))
+                                .load(pic)
                                 .centerCrop()
                                 .diskCacheStrategy(DiskCacheStrategy.ALL)
 //                    .bitmapTransform(new CropCircleTransformation(getContext()))
                                 .into(viewHolder.riv);
                         viewHolder.riv.setOnLongClickListener(view -> {
-                            String pic = listPictures.get(position);
                             Toast.makeText(MainActivity.this, "查看大图" + pic, Toast.LENGTH_SHORT).show();
                             //todo 长按轮博图片跳转到查看大图页面，看具体业务需要不需要，不需要的话可以删掉。
                             return true;
