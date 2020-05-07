@@ -3,7 +3,6 @@ package com.wenlin.roundbanner.banner;
 import android.view.View;
 
 import com.wenlin.roundbanner.R;
-import com.xuezj.cardbanner.adapter.BannerViewHolder;
 
 /**
  * @author 文琳

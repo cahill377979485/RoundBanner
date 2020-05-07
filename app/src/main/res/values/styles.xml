@@ -24,4 +24,17 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="CardBanner">
+        <attr name="main_title_text_color" format="color" />
+        <attr name="subtitle_title_text_color" format="color" />
+        <attr name="main_title_text_size" format="dimension" />
+        <attr name="subtitle_title_text_size" format="dimension" />
+        <attr name="borders_width" format="dimension" />
+        <attr name="radius" format="dimension" />
+        <attr name="divider_width" format="dimension" />
+    </declare-styleable>
+
+    <item name="key_item" type="id" />
+    <item name="key_position" type="id" />
+
 </resources>

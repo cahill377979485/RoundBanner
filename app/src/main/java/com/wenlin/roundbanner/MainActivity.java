@@ -8,10 +8,10 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.wenlin.roundbanner.banner.BannerAdapter;
+import com.wenlin.roundbanner.banner.BannerViewHolder;
 import com.wenlin.roundbanner.banner.MyBannerViewHolder;
 import com.wenlin.roundbanner.banner.MyCardBanner;
-import com.xuezj.cardbanner.adapter.BannerAdapter;
-import com.xuezj.cardbanner.adapter.BannerViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         //这里的ThumbsBean是模拟的很简单的数据实体类
         List<String> listLinks = new ArrayList<>();
         //编造模拟数据
-        String picUrl = "https://s0.xingxiaoban.com/upfile/activity/2572/5EvHuVmy.png";
+        String picUrl = "https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1588818908&di=c1428dc330be1d2d82cf83be2c695222&src=http://hbimg.b0.upaiyun.com/3804079cb84b828dc620501323a72e29a50e54328922-JRfbnX_fw658";
         String link = "https://www.baidu.com";
         for (int i = 0; i < 4; i++) {
             listPictures.add(picUrl);
@@ -45,14 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 .setBannerAdapter(new BannerAdapter() {
                     @Override
                     public BannerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                        MyBannerViewHolder holder = null;
-                        try {
-                            //这样更安全
-                            holder = new MyBannerViewHolder(LayoutInflater.from(MainActivity.this).inflate(R.layout.common_item_banner, parent, false));
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        return holder;
+                        return new MyBannerViewHolder(LayoutInflater.from(MainActivity.this).inflate(R.layout.common_item_banner, parent, false));
                     }
 
                     @Override
@@ -68,17 +61,17 @@ public class MainActivity extends AppCompatActivity {
                                 .into(viewHolder.riv);
                         viewHolder.riv.setOnLongClickListener(view -> {
                             Toast.makeText(MainActivity.this, "查看大图" + pic, Toast.LENGTH_SHORT).show();
-                            //todo 长按轮博图片跳转到查看大图页面，看具体业务需要不需要，不需要的话可以删掉。
+                            //todo 长按轮播图片跳转到查看大图页面，看具体业务需要不需要，不需要的话可以删掉。
                             return true;
                         });
                         viewHolder.riv.setOnClickListener((view -> {
                             String link = listLinks.get(position);
                             Toast.makeText(MainActivity.this, "跳转网页" + link, Toast.LENGTH_SHORT).show();
-                            //todo 点击轮博图片跳转到网页。
+                            //todo 点击轮播图片跳转到网页。
                         }));
                     }
                 });
-        //开始轮博
+        //开始轮播
         myCardBanner.start();
     }
 }

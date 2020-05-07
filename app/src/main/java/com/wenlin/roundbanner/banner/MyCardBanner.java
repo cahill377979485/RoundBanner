@@ -17,13 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.wenlin.roundbanner.R;
-import com.xuezj.cardbanner.ImageData;
-import com.xuezj.cardbanner.WeakHandler;
-import com.xuezj.cardbanner.adapter.BannerAdapter;
-import com.xuezj.cardbanner.adapter.CardAdapter;
-import com.xuezj.cardbanner.mode.BaseTransformer;
-import com.xuezj.cardbanner.mode.ScaleYTransformer;
-import com.xuezj.cardbanner.utils.BannerUtils;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,13 +36,13 @@ public class MyCardBanner extends RelativeLayout {
     private int subtitleTitleTextColor = 0xFFFFFFFF;
     private int mainTitleTextSize = 15;
     private int subtitleTitleTextSize = 12;
-    private int borderWidth = 20;
+    private int bordersWidth = 20;
     private int radius = 8;
     private int dividerWidth = 0;
     private MyLinearLayoutManager mLayoutManager;
     private PagerSnapHelper pagerSnapHelper = new PagerSnapHelper();
     private MyCardView cardView;
-    private List<ImageData> datas;
+    private List<ImageData> data;
     private BaseTransformer baseTransformer;
     private int viewWidth;
     private MyCardBanner.OnItemClickListener onItemClickListener;
@@ -64,17 +58,9 @@ public class MyCardBanner extends RelativeLayout {
 
     public MyCardBanner(Context context) {
         this(context, null);
-//        this.context = context;
-//        borderWidth = BannerUtils.dp2px(context, 30);
-//        radius = BannerUtils.dp2px(context, 8);
-//        View view = LayoutInflater.from(context).inflate(R.layout.card_banner, this, true);
-//        cardBannerView = (CardBannerView) view.findViewById(R.id.card_view);
     }
 
     public MyCardBanner(Context context, AttributeSet attrs) {
-//        super(context, attrs);
-//        this.context = context;
-//        initView(attrs);
         this(context, attrs, 0);
     }
 
@@ -92,7 +78,7 @@ public class MyCardBanner extends RelativeLayout {
         baseTransformer = new ScaleYTransformer();
         mLayoutManager = new MyLinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
         RelativeLayout pointContainerRl = new RelativeLayout(context);
-        pointContainerRl.setPadding(DensityUtil.dp2px(12), DensityUtil.dp2px(12), DensityUtil.dp2px(12), DensityUtil.dp2px(12));
+        pointContainerRl.setPadding(BannerUtils.dp2px(context, 12), BannerUtils.dp2px(context, 12), BannerUtils.dp2px(context, 12), BannerUtils.dp2px(context, 12));
         LayoutParams pointContainerLp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         // 处理圆点在顶部还是底部
         pointContainerLp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
@@ -109,26 +95,26 @@ public class MyCardBanner extends RelativeLayout {
         if (attrs == null) {
             return;
         }
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.card_banner);
-        borderWidth = typedArray.getDimensionPixelSize(R.styleable.card_banner_banner_border_width, BannerUtils.dp2px(context, borderWidth));
-        radius = typedArray.getDimensionPixelSize(R.styleable.card_banner_radius, BannerUtils.dp2px(context, radius));
-        mainTitleTextColor = typedArray.getColor(R.styleable.card_banner_main_title_text_color, mainTitleTextColor);
-        subtitleTitleTextColor = typedArray.getColor(R.styleable.card_banner_subtitle_title_text_color, subtitleTitleTextColor);
-        dividerWidth = typedArray.getDimensionPixelSize(R.styleable.card_banner_divider_width, BannerUtils.dp2px(context, dividerWidth)) / 2;
-        mainTitleTextSize = BannerUtils.px2sp(context, typedArray.getDimensionPixelSize(R.styleable.card_banner_main_title_text_size, BannerUtils.sp2px(context, mainTitleTextSize)));
-        subtitleTitleTextSize = BannerUtils.px2sp(context, typedArray.getDimensionPixelSize(R.styleable.card_banner_subtitle_title_text_size, BannerUtils.sp2px(context, subtitleTitleTextSize)));
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CardBanner);
+        bordersWidth = typedArray.getDimensionPixelSize(R.styleable.CardBanner_borders_width, BannerUtils.dp2px(context, bordersWidth));
+        radius = typedArray.getDimensionPixelSize(R.styleable.CardBanner_radius, BannerUtils.dp2px(context, radius));
+        mainTitleTextColor = typedArray.getColor(R.styleable.CardBanner_main_title_text_color, mainTitleTextColor);
+        subtitleTitleTextColor = typedArray.getColor(R.styleable.CardBanner_subtitle_title_text_color, subtitleTitleTextColor);
+        dividerWidth = typedArray.getDimensionPixelSize(R.styleable.CardBanner_divider_width, BannerUtils.dp2px(context, dividerWidth)) / 2;
+        mainTitleTextSize = BannerUtils.px2sp(context, typedArray.getDimensionPixelSize(R.styleable.CardBanner_main_title_text_size, BannerUtils.sp2px(context, mainTitleTextSize)));
+        subtitleTitleTextSize = BannerUtils.px2sp(context, typedArray.getDimensionPixelSize(R.styleable.CardBanner_subtitle_title_text_size, BannerUtils.sp2px(context, subtitleTitleTextSize)));
         typedArray.recycle();
     }
 
 
-    public MyCardBanner setDatas(List<ImageData> datas) {
-        this.datas = datas;
-        this.dataCount = datas.size();
+    public MyCardBanner setData(List<ImageData> data) {
+        this.data = data;
+        this.dataCount = data.size();
         return this;
     }
 
     public MyCardBanner setDataCount(int dataCount) {
-        this.datas = null;
+        this.data = null;
         this.dataCount = dataCount;
         return this;
     }
@@ -168,13 +154,13 @@ public class MyCardBanner extends RelativeLayout {
         pagerSnapHelper.attachToRecyclerView(cardView);
         cardView.setOnCenterItemClickListener(v -> {
             if (onItemClickListener != null) {
-                onItemClickListener.onItem((int) v.getTag(com.xuezj.cardbanner.R.id.key_position));
+                onItemClickListener.onItem((int) v.getTag(R.id.key_position));
             }
         });
-        cardAdapter = new CardAdapter(context, viewWidth, borderWidth, dividerWidth);
-        if (datas != null) {
-            cardView.setDataCount(datas.size());
-            cardAdapter.setDatas(datas);
+        cardAdapter = new CardAdapter(context, viewWidth, bordersWidth, dividerWidth);
+        if (data != null) {
+            cardView.setDataCount(data.size());
+            cardAdapter.setData(data);
         } else if (dataCount != 0) {
             cardView.setDataCount(dataCount);
             cardAdapter.setDataCount(dataCount);
@@ -186,7 +172,7 @@ public class MyCardBanner extends RelativeLayout {
                 mPointRealContainerLl.removeAllViews();
                 if (mViews.size() > 1) {
                     LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                    lp.setMargins(DensityUtil.dp2px(3), 0, DensityUtil.dp2px(3), 0);
+                    lp.setMargins(BannerUtils.dp2px(context, 3), 0, BannerUtils.dp2px(context, 3), 0);
                     ImageView imageView;
                     for (int i = 0; i < mViews.size(); i++) {
                         imageView = new ImageView(getContext());
@@ -263,10 +249,9 @@ public class MyCardBanner extends RelativeLayout {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-//        Log.i(tag, ev.getAction() + "--" + isAutoPlay);
         if (isPlay) {
             int action = ev.getAction();
-            if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL || action == MotionEvent.ACTION_OUTSIDE||action == MotionEvent.ACTION_DOWN) {
+            if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL || action == MotionEvent.ACTION_OUTSIDE || action == MotionEvent.ACTION_DOWN) {
                 autoPlay();
 //            } else if (action == MotionEvent.ACTION_DOWN) {
 //                stopPlay();

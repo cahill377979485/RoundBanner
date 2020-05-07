@@ -10,8 +10,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.xuezj.cardbanner.mode.BaseTransformer;
-import com.xuezj.cardbanner.view.CardView;
+import com.wenlin.roundbanner.R;
 
 /**
  * @author 文琳
@@ -28,9 +27,9 @@ public class MyCardView extends RecyclerView implements View.OnClickListener {
     private BaseTransformer mViewMode;
     //    private boolean mNeedCenterForce;
     private boolean mNeedLoop = true;
-    private CardView.OnCenterItemClickListener mCenterItemClickListener;
+    private MyCardView.OnCenterItemClickListener mCenterItemClickListener;
     private View mCurrentCenterChildView;
-    private CardView.OnScrollListener mOnScrollListener;
+    private MyCardView.OnScrollListener mOnScrollListener;
     private boolean mFirstOnLayout;
     private boolean mFirstSetAdapter = true;
     private int dataCount;
@@ -155,7 +154,7 @@ public class MyCardView extends RecyclerView implements View.OnClickListener {
     public int getCurrentItem() {
         mCurrentCenterChildView = findViewAtCenter();
         if (mCurrentCenterChildView != null) {
-            return (int) mCurrentCenterChildView.getTag(com.xuezj.cardbanner.R.id.key_item);
+            return (int) mCurrentCenterChildView.getTag(R.id.key_item);
         }
         return 0;
     }
@@ -183,7 +182,7 @@ public class MyCardView extends RecyclerView implements View.OnClickListener {
     }
 
 
-    public void setOnCenterItemClickListener(CardView.OnCenterItemClickListener listener) {
+    public void setOnCenterItemClickListener(MyCardView.OnCenterItemClickListener listener) {
         mCenterItemClickListener = listener;
     }
 
@@ -195,7 +194,7 @@ public class MyCardView extends RecyclerView implements View.OnClickListener {
         mViewMode = mode;
     }
 
-    public void setOnScrollListener(CardView.OnScrollListener listener) {
+    public void setOnScrollListener(MyCardView.OnScrollListener listener) {
         mOnScrollListener = listener;
     }
 
