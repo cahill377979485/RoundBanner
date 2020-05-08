@@ -16,7 +16,7 @@ import com.wenlin.roundbanner.banner.MyCardBanner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class CardBannerActivity extends AppCompatActivity {
 
     private MyCardBanner myCardBanner;
 
@@ -45,28 +45,28 @@ public class MainActivity extends AppCompatActivity {
                 .setBannerAdapter(new BannerAdapter() {
                     @Override
                     public BannerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                        return new MyBannerViewHolder(LayoutInflater.from(MainActivity.this).inflate(R.layout.common_item_banner, parent, false));
+                        return new MyBannerViewHolder(LayoutInflater.from(CardBannerActivity.this).inflate(R.layout.common_item_banner, parent, false));
                     }
 
                     @Override
                     public void onBindViewHolder(BannerViewHolder holder, int position) {
-                        if (MainActivity.this.isFinishing()) return;
+                        if (CardBannerActivity.this.isFinishing()) return;
                         MyBannerViewHolder viewHolder = (MyBannerViewHolder) holder;
                         String pic = listPictures.get(position);
-                        Glide.with(MainActivity.this)
+                        Glide.with(CardBannerActivity.this)
                                 .load(pic)
                                 .centerCrop()
                                 .diskCacheStrategy(DiskCacheStrategy.ALL)
 //                    .bitmapTransform(new CropCircleTransformation(getContext()))
                                 .into(viewHolder.riv);
                         viewHolder.riv.setOnLongClickListener(view -> {
-                            Toast.makeText(MainActivity.this, "查看大图" + pic, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CardBannerActivity.this, "查看大图" + pic, Toast.LENGTH_SHORT).show();
                             //todo 长按轮播图片跳转到查看大图页面，看具体业务需要不需要，不需要的话可以删掉。
                             return true;
                         });
                         viewHolder.riv.setOnClickListener((view -> {
                             String link = listLinks.get(position);
-                            Toast.makeText(MainActivity.this, "跳转网页" + link, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CardBannerActivity.this, "跳转网页" + link, Toast.LENGTH_SHORT).show();
                             //todo 点击轮播图片跳转到网页。
                         }));
                     }

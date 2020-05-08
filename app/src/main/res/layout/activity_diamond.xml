@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.wenlin.roundbanner.diamond.DiamondCardView
+        android:id="@+id/dcv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorAccent"
+        android:minWidth="1000px" />
+
+    <TextView
+        android:id="@+id/tv_start"
+        android:layout_width="40dp"
+        android:layout_height="125dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="#90000000"
+        android:gravity="center"
+        android:text="start" />
+
+    <TextView
+        android:id="@+id/tv_stop"
+        android:layout_width="40dp"
+        android:layout_height="125dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="50dp"
+        android:background="#90000000"
+        android:gravity="center"
+        android:text="stop" />
+</RelativeLayout>
