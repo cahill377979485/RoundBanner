@@ -37,6 +37,8 @@ dependencies {
 
     //封装的工具类（屏幕、文件、尺寸、数据库等工具）
     implementation 'com.blankj:utilcode:1.12.6'
+    //低耦合的组合式RecyclerView的适配器
+    implementation 'me.drakeet.multitype:multitype:3.4.4'
 
 //    implementation 'com.jakewharton:butterknife:10.2.0'
 //    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'

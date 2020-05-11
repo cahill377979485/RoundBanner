@@ -8,33 +8,4 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <!--可以控制四个角的圆形控件-->
-    <declare-styleable name="RoundImageView">
-        <attr name="border_width" format="dimension" />
-        <attr name="border_color" format="color" />
-        <attr name="corner_radius" format="dimension" />
-        <attr name="leftTop_corner_radius" format="dimension" />
-        <attr name="rightTop_corner_radius" format="dimension" />
-        <attr name="leftBottom_corner_radius" format="dimension" />
-        <attr name="rightBottom_corner_radius" format="dimension" />
-        <attr name="type" format="enum">
-            <enum name="oval" value="2" />
-            <enum name="round" value="1" />
-            <enum name="circle" value="0" />
-        </attr>
-    </declare-styleable>
-
-    <declare-styleable name="CardBanner">
-        <attr name="main_title_text_color" format="color" />
-        <attr name="subtitle_title_text_color" format="color" />
-        <attr name="main_title_text_size" format="dimension" />
-        <attr name="subtitle_title_text_size" format="dimension" />
-        <attr name="borders_width" format="dimension" />
-        <attr name="radius" format="dimension" />
-        <attr name="divider_width" format="dimension" />
-    </declare-styleable>
-
-    <item name="key_item" type="id" />
-    <item name="key_position" type="id" />
-
 </resources>
