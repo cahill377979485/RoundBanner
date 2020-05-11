@@ -8,10 +8,10 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.wenlin.roundbanner.banner.BannerAdapter;
-import com.wenlin.roundbanner.banner.BannerViewHolder;
-import com.wenlin.roundbanner.banner.MyBannerViewHolder;
-import com.wenlin.roundbanner.banner.MyCardBanner;
+import com.cahill.roundbanner.BannerAdapter;
+import com.cahill.roundbanner.BannerViewHolder;
+import com.cahill.roundbanner.MyBannerViewHolder;
+import com.cahill.roundbanner.MyCardBanner;
 
 import java.util.ArrayList;
 import java.util.List;

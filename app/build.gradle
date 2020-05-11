@@ -40,6 +40,5 @@ dependencies {
     //低耦合的组合式RecyclerView的适配器
     implementation 'me.drakeet.multitype:multitype:3.4.4'
 
-//    implementation 'com.jakewharton:butterknife:10.2.0'
-//    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+    implementation 'com.github.cahill377979485:RoundBanner2.0:2.0'
 }
