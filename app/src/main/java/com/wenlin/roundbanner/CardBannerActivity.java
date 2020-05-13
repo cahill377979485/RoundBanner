@@ -31,10 +31,10 @@ public class CardBannerActivity extends AppCompatActivity {
     private void setData() {
         //获取数据，这里设置模拟数据
         List<String> listPictures = new ArrayList<>();
-        //这里的ThumbsBean是模拟的很简单的数据实体类
         List<String> listLinks = new ArrayList<>();
         //编造模拟数据
-        String picUrl = "https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1588818908&di=c1428dc330be1d2d82cf83be2c695222&src=http://hbimg.b0.upaiyun.com/3804079cb84b828dc620501323a72e29a50e54328922-JRfbnX_fw658";
+        String picUrl = "https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1588818908&di" +
+                "=c1428dc330be1d2d82cf83be2c695222&src=http://hbimg.b0.upaiyun.com/3804079cb84b828dc620501323a72e29a50e54328922-JRfbnX_fw658";
         String link = "https://www.baidu.com";
         for (int i = 0; i < 4; i++) {
             listPictures.add(picUrl);
@@ -45,7 +45,8 @@ public class CardBannerActivity extends AppCompatActivity {
                 .setBannerAdapter(new BannerAdapter() {
                     @Override
                     public BannerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                        return new MyBannerViewHolder(LayoutInflater.from(CardBannerActivity.this).inflate(R.layout.common_item_banner, parent, false));
+                        return new MyBannerViewHolder(LayoutInflater.from(CardBannerActivity.this)
+                                .inflate(R.layout.common_item_banner, parent, false));
                     }
 
                     @Override
